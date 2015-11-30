@@ -1,0 +1,54 @@
+{
+  "name": "percentile",
+  "version": "1.0.0",
+  "description": "Calculate percentile for given array of values",
+  "main": "lib/index.js",
+  "files": [
+    "lib/"
+  ],
+  "keywords": [
+    "math","calculate","stats","percentile"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/d4rkr00t/percentile"
+  },
+  "scripts": {
+    "audit": "nsp check package",
+    "check": "npm run audit && npm outdated --depth 0",
+    "coverage": "nyc --reporter=lcov --reporter=text --reporter=html npm test",
+    "coveralls": "npm run coverage && cat ./coverage/lcov.info | coveralls && rm -rf ./coverage",
+    "lint": "eslint src test",
+    "test": "ava",
+    "validate": "npm run lint && npm test",
+    "prepare": "npm run validate && npm run check",
+    "pp": "npm run prepare"
+  },
+  "author": {
+    "name": "Stanislav Sysoev",
+    "email": "d4rkr00t@gmail.com",
+    "url": "https://github.com/d4rkr00t"
+  },
+  "pre-commit": [
+    "validate"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "ava": "^0.7.0",
+    "babel": "^5.8.33",
+    "babel-core": "^5.8.33",
+    "babel-eslint": "^4.1.5",
+    "coveralls": "^2.11.4",
+    "cz-conventional-changelog": "^1.1.4",
+    "eslint": "^1.10.1",
+    "nsp": "^2.0.0",
+    "nyc": "^4.0.1",
+    "pre-commit": "^1.1.2"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
