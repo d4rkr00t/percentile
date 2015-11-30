@@ -7,11 +7,7 @@
 [![coveralls](https://img.shields.io/coveralls/d4rkr00t/percentile.svg)](https://coveralls.io/github/d4rkr00t/percentile)
 [![commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
-Calculate percentile for given array of values
-
-
-## Features
-// TODO
+Calculate percentile for given array of values.
 
 ## Install
 
@@ -21,8 +17,25 @@ npm install percentile
 
 ## Usage
 
-```sh
-// TODO
+```js
+// With simple values
+var percentile = require('percentile');
+console.log(percentile(80, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10])); // 8
+
+// With complex values
+var percentile = require('percentile');
+var result = percentile(
+    80,
+    [
+        { val: 1 }, { val: 2 }, { val: 3 }, { val: 4 }, { val: 5 },
+        { val: 6 }, { val: 7 }, { val: 8 }, { val: 9 }, { val: 10 }
+    ],
+    function (item) { // function to extract value from object
+        return item.val;
+    }
+);
+console.log(result); // 8
+
 ```
 
 ## Author
