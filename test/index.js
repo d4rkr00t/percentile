@@ -18,6 +18,7 @@ function shuffleArray(arr) {
 }
 
 var stubsSimple = [
+  { percentile: 0, list: shuffleArray(generateArraySimple(100)), result: 1 },
   { percentile: 25, list: shuffleArray(generateArraySimple(100)), result: 25 },
   { percentile: 50, list: shuffleArray(generateArraySimple(100)), result: 50 },
   { percentile: 75, list: shuffleArray(generateArraySimple(100)), result: 75 },
@@ -27,6 +28,7 @@ var stubsSimple = [
 ];
 
 var stubsObject = [
+  { percentile: 0, list: shuffleArray(generateArrayOfObject(100)), result: 1 },
   { percentile: 25, list: shuffleArray(generateArrayOfObject(100)), result: 25 },
   { percentile: 50, list: shuffleArray(generateArrayOfObject(100)), result: 50 },
   { percentile: 75, list: shuffleArray(generateArrayOfObject(100)), result: 75 },
@@ -51,4 +53,22 @@ test('percentile values in object', t => {
       stub.result
     );
   });
+});
+
+test('throw an error if NaN', t => {
+  t.throws(() => {
+    percentile(undefined) // eslint-disable-line
+  }, Error);
+});
+
+test('throw an error if less than 0', t => {
+  t.throws(() => {
+    percentile(-1) // eslint-disable-line
+  }, Error);
+});
+
+test('throw an error if grater than 100', t => {
+  t.throws(() => {
+    percentile(101) // eslint-disable-line
+  }, Error);
 });
