@@ -42,7 +42,7 @@
     "babel-eslint": "^6.0.2",
     "coveralls": "^2.11.4",
     "cz-conventional-changelog": "^1.1.4",
-    "eslint": "^1.10.1",
+    "eslint": "^2.9.0",
     "nsp": "^2.0.0",
     "nyc": "^6.1.1",
     "pre-commit": "^1.1.2"
