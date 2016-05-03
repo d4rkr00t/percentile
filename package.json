@@ -1,6 +1,6 @@
 {
   "name": "percentile",
-  "version": "1.1.0",
+  "version": "0.0.0-semantically-released",
   "description": "Calculate percentile for given array of values",
   "main": "lib/index.js",
   "files": [
@@ -26,7 +26,8 @@
     "test": "ava",
     "validate": "npm run lint && npm test",
     "prepare": "npm run validate && npm run check",
-    "pp": "npm run prepare"
+    "pp": "npm run prepare",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "author": {
     "name": "Stanislav Sysoev",
@@ -45,7 +46,8 @@
     "eslint": "^2.9.0",
     "nsp": "^2.3.2",
     "nyc": "^6.4.2",
-    "pre-commit": "^1.1.2"
+    "pre-commit": "^1.1.2",
+    "semantic-release": "^4.3.5"
   },
   "config": {
     "commitizen": {
