@@ -45,7 +45,7 @@
     "cz-conventional-changelog": "^1.1.6",
     "eslint": "^2.9.0",
     "nsp": "^2.3.2",
-    "nyc": "^8.3.0",
+    "nyc": "^9.0.1",
     "pre-commit": "^1.1.2",
     "semantic-release": "^4.3.5"
   },
