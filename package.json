@@ -47,7 +47,7 @@
     "nsp": "^2.3.2",
     "nyc": "^8.3.0",
     "pre-commit": "^1.1.2",
-    "semantic-release": "^4.3.5"
+    "semantic-release": "^6.3.2"
   },
   "config": {
     "commitizen": {
