@@ -17,7 +17,7 @@ function shuffleArray(arr) {
   return arr.sort(() => 0.5 - Math.random());
 }
 
-var stubsSimple = [
+const stubsSimple = [
   { percentile: 0, list: shuffleArray(generateArraySimple(100)), result: 1 },
   { percentile: 25, list: shuffleArray(generateArraySimple(100)), result: 25 },
   { percentile: 50, list: shuffleArray(generateArraySimple(100)), result: 50 },
@@ -27,7 +27,7 @@ var stubsSimple = [
   { percentile: 75, list: shuffleArray([].concat(generateArraySimple(100), generateArraySimple(30))), result: 68 }
 ];
 
-var stubsObject = [
+const stubsObject = [
   { percentile: 0, list: shuffleArray(generateArrayOfObject(100)), result: 1 },
   { percentile: 25, list: shuffleArray(generateArrayOfObject(100)), result: 25 },
   { percentile: 50, list: shuffleArray(generateArrayOfObject(100)), result: 50 },
