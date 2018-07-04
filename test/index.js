@@ -24,6 +24,8 @@ const stubsSimple = [
   { percentile: 75, list: shuffleArray(generateArraySimple(100)), result: 75 },
   { percentile: 100, list: shuffleArray(generateArraySimple(100)), result: 100 },
 
+  { percentile: 75, list: [NaN, NaN, 1, 100], result: 1 },
+  { percentile: 75, list: [1, 100, NaN, NaN], result: 1 },
   { percentile: 75, list: shuffleArray([].concat(generateArraySimple(100), generateArraySimple(30))), result: 68 }
 ];
 
