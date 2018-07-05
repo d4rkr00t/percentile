@@ -37,6 +37,9 @@ var result = percentile(
 console.log(result); // 8
 
 ```
+## Notes
+
+Non-numeric (NaN) values are treated as the smallest values, Eg `percentile(50, [ 5, 2, NaN]) === 2`
 
 ## Author
 
