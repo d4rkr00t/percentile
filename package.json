@@ -18,14 +18,11 @@
     "url": "https://github.com/d4rkr00t/percentile"
   },
   "scripts": {
-    "audit": "nsp check package",
-    "check": "npm run audit && npm outdated --depth 0",
     "coverage": "nyc --reporter=lcov --reporter=text --reporter=html npm test",
     "coveralls": "npm run coverage && cat ./coverage/lcov.info | coveralls && rm -rf ./coverage",
-    "lint": "eslint src test",
+    "lint": "eslint lib test",
     "test": "ava",
-    "validate": "npm run lint && npm test",
-    "prepare": "npm run validate && npm run check",
+    "prepare": "npm run lint && npm test",
     "pp": "npm run prepare",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
@@ -35,18 +32,17 @@
     "url": "https://github.com/d4rkr00t"
   },
   "pre-commit": [
-    "validate"
+    "prepare"
   ],
   "dependencies": {},
   "devDependencies": {
-    "ava": "^0.17.0",
-    "coveralls": "^2.11.9",
-    "cz-conventional-changelog": "^1.1.6",
-    "eslint": "^3.12.2",
-    "nsp": "^2.3.2",
-    "nyc": "^10.0.0",
+    "ava": "^0.25.0",
+    "coveralls": "^3.0.2",
+    "cz-conventional-changelog": "^2.1.0",
+    "eslint": "^5.0.1",
+    "nyc": "^12.0.2",
     "pre-commit": "^1.1.2",
-    "semantic-release": "^6.3.2"
+    "semantic-release": "^15.6.3"
   },
   "config": {
     "commitizen": {
