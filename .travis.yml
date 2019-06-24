@@ -6,7 +6,7 @@ node_js:
 install:
   - npm install
 script:
-  - npm run prepare
+  - npm run pmm:prepare
 after_success:
   - npm run coveralls
-  - npm run semantic-release
+  - npm run ci:github-release
