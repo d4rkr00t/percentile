@@ -1,6 +1,6 @@
 {
   "name": "percentile",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "Calculate a percentile for given array of values",
   "main": "lib/index.js",
   "files": [
