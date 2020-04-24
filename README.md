@@ -35,6 +35,14 @@ const result = percentile(
 );
 console.log(result); // 8
 
+// With array of percentiles
+const percentile = require("percentile");
+const result = percentile(
+  [70, 80, 90], // calculates 70p, 80p and 90p in one pass
+  [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+);
+console.log(result); // [7, 8, 9]
+
 ```
 ## Notes
 

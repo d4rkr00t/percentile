@@ -29,6 +29,15 @@ const stubsSimple = [
   { percentile: 75, list: shuffleArray([].concat(generateArraySimple(100), generateArraySimple(30))), result: 68 }
 ];
 
+test('percentile simple values', t => {
+  stubsSimple.forEach(stub => {
+    t.is(
+      percentile(stub.percentile, stub.list),
+      stub.result
+    );
+  });
+});
+
 const stubsObject = [
   { percentile: 0, list: shuffleArray(generateArrayOfObject(100)), result: 1 },
   { percentile: 25, list: shuffleArray(generateArrayOfObject(100)), result: 25 },
@@ -39,15 +48,6 @@ const stubsObject = [
   { percentile: 75, list: shuffleArray([].concat(generateArrayOfObject(100), generateArrayOfObject(30))), result: 68 }
 ];
 
-test('percentile simple values', t => {
-  stubsSimple.forEach(stub => {
-    t.is(
-      percentile(stub.percentile, stub.list),
-      stub.result
-    );
-  });
-});
-
 test('percentile values in object', t => {
   stubsObject.forEach(stub => {
     t.is(
@@ -57,20 +57,34 @@ test('percentile values in object', t => {
   });
 });
 
+test('array of percentiles', t => {
+  t.deepEqual(
+    percentile([0, 25, 50, 75, 100], shuffleArray(generateArraySimple(100))),
+    [1, 25, 50, 75, 100]
+  );
+});
+
+test('array of percentiles when values are objects', t => {
+  t.deepEqual(
+    percentile([0, 25, 50, 75, 100], shuffleArray(generateArrayOfObject(100)), item => item.val).map(p => p.val),
+    [1, 25, 50, 75, 100]
+  );
+});
+
 test('throw an error if NaN', t => {
   t.throws(() => {
-    percentile(undefined) // eslint-disable-line
+    percentile(undefined, []) // eslint-disable-line
   }, Error);
 });
 
 test('throw an error if less than 0', t => {
-  t.throws(() => {
-    percentile(-1) // eslint-disable-line
-  }, Error);
+  t.throws(() => percentile(-1, []), Error);
 });
 
 test('throw an error if grater than 100', t => {
-  t.throws(() => {
-    percentile(101) // eslint-disable-line
-  }, Error);
+  t.throws(() => percentile(101, []), Error);
+});
+
+test('throws a list of errors', t => {
+  t.throws(() => percentile([101, -1, 'a'], []), Error);
 });
