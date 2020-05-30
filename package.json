@@ -20,11 +20,12 @@
   "scripts": {
     "coverage": "nyc --reporter=lcov --reporter=text --reporter=html npm test",
     "coveralls": "npm run coverage && cat ./coverage/lcov.info | coveralls && rm -rf ./coverage",
+    "build:types": "rm -rf ./lib/index.d.ts && tsc -p tsconfig.json",
     "lint": "eslint lib test",
     "bench": "node ./scripts/bench.js",
     "test": "ava",
     "ci:github-release": "conventional-github-releaser -p angular",
-    "pmm:prepare": "npm run lint && npm test",
+    "pmm:prepare": "npm run build:types && npm run lint && npm test",
     "release:major": "pmm major",
     "release:minor": "pmm minor",
     "release:patch": "pmm patch"
@@ -47,7 +48,8 @@
     "eslint": "^5.0.1",
     "nyc": "^12.0.2",
     "pmm": "^2.0.0",
-    "pre-commit": "^1.1.2"
+    "pre-commit": "^1.1.2",
+    "typescript": "^3.9.3"
   },
   "config": {
     "commitizen": {
