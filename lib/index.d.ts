@@ -9,4 +9,8 @@ export = percentile;
  *
  * @return {Number|T|Array<Number>|Array<T>}
  */
-declare function percentile<T>(pOrPs: number | Array<number>, list: number[] | Int8Array | Uint8Array | Uint8ClampedArray | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array | T[], fn?: (arg0: T) => number): number | number[] | T | T[];
+declare function percentile<T>(pOrPs: number | Array<number>, list: number[] | TypedArray | T[], fn?: (arg0: T) => number): number | number[] | T | T[];
+declare namespace percentile {
+    export { TypedArray };
+}
+type TypedArray = (Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Uint8ClampedArray | Float32Array | Float64Array);

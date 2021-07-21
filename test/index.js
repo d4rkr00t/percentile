@@ -1,5 +1,5 @@
-import test from 'ava';
-import percentile from '../lib';
+const test = require('ava');
+const percentile = require('../lib');
 
 function generateArray(length, fn) {
   return Array.apply(null, Array(length)).map(fn);
@@ -84,17 +84,17 @@ test('array of percentiles when values are objects', t => {
 test('throw an error if NaN', t => {
   t.throws(() => {
     percentile(undefined, []) // eslint-disable-line
-  }, Error);
+  }, null);
 });
 
 test('throw an error if less than 0', t => {
-  t.throws(() => percentile(-1, []), Error);
+  t.throws(() => percentile(-1, []));
 });
 
 test('throw an error if grater than 100', t => {
-  t.throws(() => percentile(101, []), Error);
+  t.throws(() => percentile(101, []));
 });
 
 test('throws a list of errors', t => {
-  t.throws(() => percentile([101, -1, 'a'], []), Error);
+  t.throws(() => percentile([101, -1, 'a'], []));
 });
