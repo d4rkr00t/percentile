@@ -29,10 +29,19 @@ const stubsSimple = [
   { percentile: 75, list: shuffleArray([].concat(generateArraySimple(100), generateArraySimple(30))), result: 68 }
 ];
 
-test('percentile simple values', t => {
+test('percentile of simple values', t => {
   stubsSimple.forEach(stub => {
     t.is(
       percentile(stub.percentile, stub.list),
+      stub.result
+    );
+  });
+});
+
+test('percentile of simple values in a typed array', t => {
+  stubsSimple.forEach(stub => {
+    t.is(
+      percentile(stub.percentile, Uint16Array.from(stub.list)),
       stub.result
     );
   });
@@ -48,7 +57,7 @@ const stubsObject = [
   { percentile: 75, list: shuffleArray([].concat(generateArrayOfObject(100), generateArrayOfObject(30))), result: 68 }
 ];
 
-test('percentile values in object', t => {
+test('percentile of values in object', t => {
   stubsObject.forEach(stub => {
     t.is(
       percentile(stub.percentile, stub.list, item => item.val).val,
@@ -70,6 +79,7 @@ test('array of percentiles when values are objects', t => {
     [1, 25, 50, 75, 100]
   );
 });
+
 
 test('throw an error if NaN', t => {
   t.throws(() => {
