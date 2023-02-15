@@ -33,7 +33,7 @@ const result = percentile(
    // function to extract a value from an object
   item => item.val
 );
-console.log(result); // 8
+console.log(result); // { val: 8 }
 
 // With array of percentiles
 const percentile = require("percentile");
