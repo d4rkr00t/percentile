@@ -22,84 +22,113 @@ const stubsSimple = [
   { percentile: 25, list: shuffleArray(generateArraySimple(100)), result: 25 },
   { percentile: 50, list: shuffleArray(generateArraySimple(100)), result: 50 },
   { percentile: 75, list: shuffleArray(generateArraySimple(100)), result: 75 },
-  { percentile: 100, list: shuffleArray(generateArraySimple(100)), result: 100 },
+  {
+    percentile: 100,
+    list: shuffleArray(generateArraySimple(100)),
+    result: 100
+  },
 
   { percentile: 75, list: [NaN, NaN, 1, 100], result: 1 },
   { percentile: 75, list: [1, 100, NaN, NaN], result: 1 },
-  { percentile: 75, list: shuffleArray([].concat(generateArraySimple(100), generateArraySimple(30))), result: 68 }
+  {
+    percentile: 75,
+    list: shuffleArray(
+      [].concat(generateArraySimple(100), generateArraySimple(30))
+    ),
+    result: 68
+  }
 ];
 
-test('percentile of simple values', t => {
-  stubsSimple.forEach(stub => {
-    t.is(
-      percentile(stub.percentile, stub.list),
-      stub.result
-    );
+test('percentile of simple values', (t) => {
+  stubsSimple.forEach((stub) => {
+    t.is(percentile(stub.percentile, stub.list), stub.result);
   });
 });
 
-test('percentile with negative values', t => {
+test('percentile with negative values', (t) => {
   t.is(percentile(50, shuffleArray([-1, -2, -3, -4, -5])), -3);
   t.is(percentile(50, shuffleArray([7, 6, -1, -2, -3, -4, -5])), -2);
 });
 
-test('percentile of simple values in a typed array', t => {
-  stubsSimple.forEach(stub => {
-    t.is(
-      percentile(stub.percentile, Uint16Array.from(stub.list)),
-      stub.result
-    );
+test('percentile of simple values in a typed array', (t) => {
+  stubsSimple.forEach((stub) => {
+    t.is(percentile(stub.percentile, Uint16Array.from(stub.list)), stub.result);
   });
 });
 
 const stubsObject = [
   { percentile: 0, list: shuffleArray(generateArrayOfObject(100)), result: 1 },
-  { percentile: 25, list: shuffleArray(generateArrayOfObject(100)), result: 25 },
-  { percentile: 50, list: shuffleArray(generateArrayOfObject(100)), result: 50 },
-  { percentile: 75, list: shuffleArray(generateArrayOfObject(100)), result: 75 },
-  { percentile: 100, list: shuffleArray(generateArrayOfObject(100)), result: 100 },
+  {
+    percentile: 25,
+    list: shuffleArray(generateArrayOfObject(100)),
+    result: 25
+  },
+  {
+    percentile: 50,
+    list: shuffleArray(generateArrayOfObject(100)),
+    result: 50
+  },
+  {
+    percentile: 75,
+    list: shuffleArray(generateArrayOfObject(100)),
+    result: 75
+  },
+  {
+    percentile: 100,
+    list: shuffleArray(generateArrayOfObject(100)),
+    result: 100
+  },
 
-  { percentile: 75, list: shuffleArray([].concat(generateArrayOfObject(100), generateArrayOfObject(30))), result: 68 }
+  {
+    percentile: 75,
+    list: shuffleArray(
+      [].concat(generateArrayOfObject(100), generateArrayOfObject(30))
+    ),
+    result: 68
+  }
 ];
 
-test('percentile of values in object', t => {
-  stubsObject.forEach(stub => {
+test('percentile of values in object', (t) => {
+  stubsObject.forEach((stub) => {
     t.is(
-      percentile(stub.percentile, stub.list, item => item.val).val,
+      percentile(stub.percentile, stub.list, (item) => item.val).val,
       stub.result
     );
   });
 });
 
-test('array of percentiles', t => {
+test('array of percentiles', (t) => {
   t.deepEqual(
     percentile([0, 25, 50, 75, 100], shuffleArray(generateArraySimple(100))),
     [1, 25, 50, 75, 100]
   );
 });
 
-test('array of percentiles when values are objects', t => {
+test('array of percentiles when values are objects', (t) => {
   t.deepEqual(
-    percentile([0, 25, 50, 75, 100], shuffleArray(generateArrayOfObject(100)), item => item.val).map(p => p.val),
+    percentile(
+      [0, 25, 50, 75, 100],
+      shuffleArray(generateArrayOfObject(100)),
+      (item) => item.val
+    ).map((p) => p.val),
     [1, 25, 50, 75, 100]
   );
 });
 
-
-test('throw an error if NaN', t => {
+test('throw an error if NaN', (t) => {
   t.throws(() => {
     percentile(undefined, []); // eslint-disable-line
   });
 });
 
-test('throw an error if less than 0', t => {
+test('throw an error if less than 0', (t) => {
   t.throws(() => percentile(-1, []));
 });
 
-test('throw an error if grater than 100', t => {
+test('throw an error if grater than 100', (t) => {
   t.throws(() => percentile(101, []));
 });
 
-test('throws a list of errors', t => {
+test('throws a list of errors', (t) => {
   t.throws(() => percentile([101, -1, 'a'], []));
 });
