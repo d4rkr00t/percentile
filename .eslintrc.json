@@ -40,11 +40,14 @@
     "no-sparse-arrays": [2],
     "no-unreachable": [2],
     "use-isnan": [2],
-    "valid-jsdoc": [2, {
-      "requireReturn": false,
-      "requireParamDescription": false,
-      "requireReturnDescription": false
-    }],
+    "valid-jsdoc": [
+      2,
+      {
+        "requireReturn": false,
+        "requireParamDescription": false,
+        "requireReturnDescription": false
+      }
+    ],
     "valid-typeof": [2],
     "no-unexpected-multiline": [2],
 
@@ -125,7 +128,7 @@
     // stylistic
     "array-bracket-spacing": [2, "never"],
     "brace-style": [2, "1tbs", { "allowSingleLine": true }],
-    "camelcase": [2, {"properties": "never"}],
+    "camelcase": [2, { "properties": "never" }],
     "comma-spacing": [2, { "before": false, "after": true }],
     "comma-style": [2, "last"],
     "computed-property-spacing": [2, "never"],
@@ -157,7 +160,6 @@
     "object-curly-spacing": [2, "always"],
     "one-var": [2, { "uninitialized": "always", "initialized": "never" }],
     "operator-assignment": [0],
-    "operator-linebreak": [2, "before"],
     "padded-blocks": [0],
     "quote-props": [2, "as-needed"],
     "quotes": [2, "single"],
@@ -165,7 +167,10 @@
     "semi": [2, "always"],
     "sort-vars": [0],
     "space-before-blocks": [2, "always"],
-    "space-before-function-paren": [2, {"anonymous": "always", "named": "never"}],
+    "space-before-function-paren": [
+      2,
+      { "anonymous": "always", "named": "never" }
+    ],
     "space-in-parens": [2, "never"],
     "space-infix-ops": [2],
     "space-unary-ops": [2],
