@@ -38,6 +38,11 @@ test('percentile of simple values', t => {
   });
 });
 
+test('percentile with negative values', t => {
+  t.is(percentile(50, shuffleArray([-1, -2, -3, -4, -5])), -3);
+  t.is(percentile(50, shuffleArray([7, 6, -1, -2, -3, -4, -5])), -2);
+});
+
 test('percentile of simple values in a typed array', t => {
   stubsSimple.forEach(stub => {
     t.is(
