@@ -83,8 +83,8 @@ test('array of percentiles when values are objects', t => {
 
 test('throw an error if NaN', t => {
   t.throws(() => {
-    percentile(undefined, []) // eslint-disable-line
-  }, null);
+    percentile(undefined, []); // eslint-disable-line
+  });
 });
 
 test('throw an error if less than 0', t => {

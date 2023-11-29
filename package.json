@@ -40,7 +40,7 @@
   ],
   "dependencies": {},
   "devDependencies": {
-    "ava": "^3.15.0",
+    "ava": "^5.3.1",
     "benchmark": "^2.1.4",
     "conventional-github-releaser": "^3.1.5",
     "cz-conventional-changelog": "^3.3.0",
